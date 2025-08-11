@@ -79,9 +79,9 @@ export default function HagridShelterApp() {
       size: "tiny",
       notes: "Loves to hoard any jewelry made of pearls.",
       image:
-        "https://i.etsystatic.com/5786465/r/il/e31435/1115665146/il_570xN.1115665146_fgl0.jpg",
+        "https://contentful.harrypotter.com/usf1vwtuqyxm/5CKiuijqSAyOL3Fv1Q1ujz/095f8d54f099ebdad2f567cadd2f7dbb/niffler_3_1800x1248.png",
       available: true,
-    }
+    },
 
  {
       id: "hippo-1",
@@ -94,7 +94,51 @@ export default function HagridShelterApp() {
         "https://contentful.harrypotter.com/usf1vwtuqyxm/6ojZMLbgHs47ciri1BXFPI/d225833c15e85b524e17b5013a1b30f8/hippogriff_3_1800x1248.png",
       available: true,
     }
+ ,{
+      id: "squid-1",
+      name: "Squiggles",
+      species: "giant squid",
+      age: "12 Years",
+      size: "small for a giant squid",
+      notes: "Very friendly. Likes warm water and tickles.",
+      image:
+        "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2023/01/1200/675/Couple-records-giant-squid-while-diving-in-Japan.jpg?ve=1&tl=1",
+      available: true,
+    },
+  ];
 
+  const newsBulletin = [
+    {
+      id: 1,
+      date: "2025-08-01",
+      title: "New Arrival: Hungarian Horntail",
+      content: "Zenith the Hungarian Horntail has joined the shelter. Please do not feed her unless you are an experienced dragon tamer.",
+    },
+    {
+      id: 2,
+      date: "2025-07-25",
+      title: "Shed Renovation Complete Thanks to Elves",
+      content: "Thanks to the help of several S.P.E.W. construction elves, the shelter shed is now bigger and more fireproof than ever.",
+    },
+    {
+      id: 3,
+      date: "2025-07-10",
+      title: "Egg Watch",
+      content: "Shelldon the mysterious egg is showing signs of hatching as we move him to an incubater. Stay tuned for updates!",
+    },
+    {
+      id: 3,
+      date: "2025-07-7",
+      title: "Oopsies - Another Skrewt Incident",
+      content: "Boomy the skrewt blew up Woody's tree. Again. Hagrid is looking for a new tree to plant. Please let us know if you have any spare seeds. Woody prefers maple or sakura.",
+    },
+    {
+      id: 3,
+      date: "2025-07-3",
+      title: "Fire Alert",
+      content: "Due to recent fires in the Forbidden Forest, some creatures have been forced out of their homes. If you see a lost animal outside the forest, please bring it to the shelter.",
+    },
+    // Add more news items here as needed
   ];
 
 // --- Dev-only auto reset & HMR handling ---
@@ -268,8 +312,21 @@ useEffect(() => {
 
           <div className="bg-white p-4 rounded-2xl shadow-sm">
             <h4 className="font-semibold text-amber-800">Status</h4>
-            <p className="text-sm text-amber-700 mt-2">{statusMsg || "We are currently accepting new creatures! No muggle beasts please."}</p>
+            <p className="text-sm text-amber-700 mt-2">{statusMsg || "Nothing right now. No news is good news!"}</p>
           </div>
+                   <div className="bg-white p-4 rounded-2xl shadow-sm">
+            <h4 className="font-semibold text-amber-800 mb-2">News Bulletin</h4>
+            <ul className="space-y-3">
+              {newsBulletin.map((item) => (
+                <li key={item.id} className="border-l-4 border-amber-400 pl-3">
+                  <div className="text-xs text-amber-600">{new Date(item.date).toLocaleDateString()}</div>
+                  <div className="font-semibold text-amber-900">{item.title}</div>
+                  <div className="text-sm text-amber-700">{item.content}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+ 
         </aside>
 
         {/* Middle: animal grid */}
@@ -293,7 +350,7 @@ useEffect(() => {
                         </span>
                       </div>
                       <p className="text-sm text-amber-700">{a.species} • {a.age}</p>
-                      <p className="mt-2 text-sm text-amber-600 truncate">{a.notes}</p>
+                      <p className="mt-2 text-sm text-amber-600">{a.notes}</p>
                     </div>
 
                     <div className="flex gap-2 mt-3">
